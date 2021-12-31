@@ -13,8 +13,10 @@ RUN curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor | tee /usr/sha
     | tee /etc/apt/preferences.d/99nginx; \
     DEBIAN_FRONTEND="noninteractive" apt install -yq nginx;
     
-# ARG DEBIAN_FRONTEND="noninteractive"
-# RUN apt install -yq nginx;
+
+RUN mkdir -p /data/www;
+COPY ./index.html /data/www/
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
 # Set root password to root
 RUN echo "root:root" | chpasswd
