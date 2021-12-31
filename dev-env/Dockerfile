@@ -15,8 +15,8 @@ RUN curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor | tee /usr/sha
     
 
 RUN mkdir -p /data/www;
-COPY ./index.html /data/www/
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./www /data/
+COPY ./nginx.conf /etc/nginx/
 
 # Set root password to root
 RUN echo "root:root" | chpasswd
